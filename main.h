@@ -25,11 +25,13 @@ SOFTWARE.
 
 #include "dependencies/dataStructures.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct validationRules {
 
   int (*isNegative)(int * number);
   int (*isZero)(int * number);
+  void (*fileValidation)(FILE * file);
 
 } validationRules;
 
@@ -45,6 +47,14 @@ int isZero (int * number) {
   if (*number == 0) return 1;
 
   return 0;
+}
+
+void fileValidation (FILE * file) {
+
+  if (file == NULL) {
+    printf("Error Reading File\n");
+    exit (0);
+  }
 }
 
 typedef struct errorsHandler {
@@ -96,28 +106,4 @@ int linearBinarySearch (oneDimensionalArrayType oneDimensionalArray, int valueTo
   }
 
   return 0;
-}
-
-/* still for cheks */
-void readOneDimensionalArray (oneDimensionalArrayType * oneDimensionalArray) {
-
-  scanf("%d\n", &oneDimensionalArray->length);
-
-  oneDimensionalArray->length -= 1;
-  oneDimensionalArray->startPoint = 0;
-  oneDimensionalArray->endPoint = 0;
-
-  for (int it = oneDimensionalArray->startPoint; it < oneDimensionalArray->length + oneDimensionalArray->endPoint; it++)
-      scanf("%d\n", &oneDimensionalArray->oneDimensionalArray_int_[it]);
-}
-
-void main (void) {
-
-  oneDimensionalArrayType oneDimensionalArrayObject;
-
-  binarySearchAlgorithms __algos__ = { linearBinarySearch };
-
-  readOneDimensionalArray (& oneDimensionalArrayObject);
-
-  printf("%d\n", __algos__.linearBinarySearch (oneDimensionalArrayObject, 31));
 }
