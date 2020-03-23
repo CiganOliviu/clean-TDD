@@ -80,11 +80,13 @@ int oneDimensionalArrayErrorsHandler (oneDimensionalArrayType oneDimensionalArra
   return 1;
 }
 
-typedef struct binarySearchAlgorithms {
+typedef struct divideEtEmperaAlgorithms {
 
   int (*linearBinarySearch)(oneDimensionalArrayType oneDimensionalArray, int valueToSearch);
+  int (*maxDivideEtEmpera)(oneDimensionalArrayType oneDimensionalArray, limits interval);
+  int (*minDivideEtEmpera)(oneDimensionalArrayType oneDimensionalArray, limits interval);
 
-} binarySearchAlgorithms;
+} divideEtEmperaAlgorithms;
 
 int linearBinarySearch (oneDimensionalArrayType oneDimensionalArray, int valueToSearch) {
 
@@ -106,4 +108,62 @@ int linearBinarySearch (oneDimensionalArrayType oneDimensionalArray, int valueTo
   }
 
   return 0;
+}
+
+int maxDivideEtEmpera (oneDimensionalArrayType oneDimensionalArray, limits interval) {
+
+  errorsHandler __handler__ = { oneDimensionalArrayErrorsHandler };
+
+  __handler__.oneDimensionalArrayErrorsHandler (oneDimensionalArray);
+
+  int parameterOne, parameterTwo, middleIndex;
+  limits rightWing;
+  limits leftWing;
+
+  if (interval.minimLimit_int_ == interval.maximLimit_int_)  return oneDimensionalArray.oneDimensionalArray_int_[interval.minimLimit_int_];
+  else {
+
+    middleIndex = (interval.minimLimit_int_ + interval.maximLimit_int_) / 2;
+
+    leftWing.minimLimit_int_ = interval.minimLimit_int_;
+    leftWing.maximLimit_int_ = middleIndex;
+
+    rightWing.minimLimit_int_ = middleIndex + 1;
+    rightWing.maximLimit_int_ = interval.maximLimit_int_;
+
+    parameterOne = maxDivideEtEmpera (oneDimensionalArray, leftWing);
+    parameterTwo = maxDivideEtEmpera (oneDimensionalArray, rightWing);
+
+    if (parameterOne > parameterTwo) return parameterOne;
+    else return parameterTwo;
+  }
+}
+
+int minDivideEtEmpera (oneDimensionalArrayType oneDimensionalArray, limits interval) {
+
+  errorsHandler __handler__ = { oneDimensionalArrayErrorsHandler };
+
+  __handler__.oneDimensionalArrayErrorsHandler (oneDimensionalArray);
+
+  int parameterOne, parameterTwo, middleIndex;
+  limits rightWing;
+  limits leftWing;
+
+  if (interval.minimLimit_int_ == interval.maximLimit_int_)  return oneDimensionalArray.oneDimensionalArray_int_[interval.minimLimit_int_];
+  else {
+
+    middleIndex = (interval.minimLimit_int_ + interval.maximLimit_int_) / 2;
+
+    leftWing.minimLimit_int_ = interval.minimLimit_int_;
+    leftWing.maximLimit_int_ = middleIndex;
+
+    rightWing.minimLimit_int_ = middleIndex + 1;
+    rightWing.maximLimit_int_ = interval.maximLimit_int_;
+
+    parameterOne = maxDivideEtEmpera (oneDimensionalArray, leftWing);
+    parameterTwo = maxDivideEtEmpera (oneDimensionalArray, rightWing);
+
+    if (parameterOne < parameterTwo) return parameterOne;
+    else return parameterTwo;
+  }
 }
