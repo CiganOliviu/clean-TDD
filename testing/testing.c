@@ -62,7 +62,7 @@ void sortData (oneDimensionalArrayType * oneDimensionalArray) {
 typedef struct assertions {
 
   int (*valueAssertion)(int returnedValue, int expectedValue);
-  void (*returnEvaluation)(int evaluation);
+  void (*logEvaluation)(int evaluation);
 
 } assertions;
 
@@ -73,7 +73,7 @@ int valueAssertion (int returnedValue, int expectedValue) {
   return 0;
 }
 
-void returnEvaluation (int evaluation) {
+void logEvaluation (int evaluation) {
 
   if (evaluation == 1)
     printf("%s\n", "Test passed");
@@ -87,7 +87,7 @@ void main (void) {
 
   lowLevelProcessing __processing__ = { readOneDimensionalArray, outputOneDimensionalArray };
   dataNormalisation __normalisation__ = { interchangeValues, sortData };
-  assertions __assertions__ = { valueAssertion, returnEvaluation };
+  assertions __assertions__ = { valueAssertion, logEvaluation };
   divideEtEmperaAlgorithms __divideEtEmpera__ = { linearBinarySearch, maxDivideEtEmpera , minDivideEtEmpera};
   limits interval;
 
@@ -101,11 +101,11 @@ void main (void) {
 
   printf("%s\n", "");
 
-  __assertions__.returnEvaluation ( __divideEtEmpera__.linearBinarySearch (oneDimensionalArrayObject, 435) );
+  __assertions__.logEvaluation ( __divideEtEmpera__.linearBinarySearch (oneDimensionalArrayObject, 435) );
 
   interval.minimLimit_int_ = oneDimensionalArrayObject.startPoint;
   interval.maximLimit_int_ = oneDimensionalArrayObject.length;
 
-  __assertions__.returnEvaluation ( __assertions__.valueAssertion (__divideEtEmpera__.minDivideEtEmpera (oneDimensionalArrayObject, interval), 1) );
-  __assertions__.returnEvaluation ( __assertions__.valueAssertion (__divideEtEmpera__.maxDivideEtEmpera (oneDimensionalArrayObject, interval), 8762) );
+  __assertions__.logEvaluation ( __assertions__.valueAssertion (__divideEtEmpera__.minDivideEtEmpera (oneDimensionalArrayObject, interval), 1) );
+  __assertions__.logEvaluation ( __assertions__.valueAssertion (__divideEtEmpera__.maxDivideEtEmpera (oneDimensionalArrayObject, interval), 8762) );
 }
