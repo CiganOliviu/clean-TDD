@@ -1,11 +1,4 @@
-#include "../algorithmsSource.h"
-
-typedef struct lowLevelProcessing {
-
-  void (*readOneDimensionalArray)(char * fileName, oneDimensionalArrayType * oneDimensionalArray);
-  void (*outputOneDimensionalArray)(oneDimensionalArrayType oneDimensionalArray);
-
-} lowLevelProcessing;
+#include "testing.h"
 
 void readOneDimensionalArray (char * fileName, oneDimensionalArrayType * oneDimensionalArray) {
 
@@ -37,13 +30,6 @@ void outputOneDimensionalArray (oneDimensionalArrayType oneDimensionalArray) {
     printf("%d ", oneDimensionalArray.oneDimensionalArray_int_[iterator]);
 }
 
-typedef struct dataNormalisation {
-
-  void (*interchangeValues)(int * parameterOne, int * parameterTwo);
-  void (*sortData)(oneDimensionalArrayType * oneDimensionalArray);
-
-} dataNormalisation;
-
 void interchangeValues (int * parameterOne, int * parameterTwo) {
 
   *parameterOne = *parameterOne + *parameterTwo;
@@ -58,13 +44,6 @@ void sortData (oneDimensionalArrayType * oneDimensionalArray) {
       if (oneDimensionalArray->oneDimensionalArray_int_[jiterator] > oneDimensionalArray->oneDimensionalArray_int_[jiterator + 1])
         interchangeValues (&oneDimensionalArray->oneDimensionalArray_int_[jiterator], &oneDimensionalArray->oneDimensionalArray_int_[jiterator + 1]);
 }
-
-typedef struct assertions {
-
-  int (*valueAssertion)(int returnedValue, int expectedValue);
-  void (*logEvaluation)(int evaluation);
-
-} assertions;
 
 int valueAssertion (int returnedValue, int expectedValue) {
 
