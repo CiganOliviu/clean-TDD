@@ -1,13 +1,4 @@
-#include "../dependencies/libraries.h"
-#include "../dependencies/dataStructures.h"
-
-typedef struct validationRules {
-
-  int (*isNegative)(int * number);
-  int (*isZero)(int * number);
-  void (*fileValidation)(FILE * file);
-
-} validationRules;
+#include "validationRulesDefinition.h"
 
 int isNegative (int * number) {
 
@@ -30,12 +21,6 @@ void fileValidation (FILE * file) {
     exit (0);
   }
 }
-
-typedef struct errorsHandler {
-
-  int (*oneDimensionalArrayErrorsHandler)(oneDimensionalArrayType oneDimensionalArray);
-
-} errorsHandler;
 
 int oneDimensionalArrayErrorsHandler (oneDimensionalArrayType oneDimensionalArray) {
 

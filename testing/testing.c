@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../algorithmsSource.h"
 
 typedef struct lowLevelProcessing {
 
