@@ -24,7 +24,7 @@ SOFTWARE.
 */
 
 #include "validationRules/validationRules.h"
-#include "dependencies/algorithmsSourceDefinition.h"
+#include "coreFunctionalitiesDependency/algorithmsSourceDefinition.h"
 
 
 int linearBinarySearch (oneDimensionalArrayType oneDimensionalArray, int valueToSearch) {
