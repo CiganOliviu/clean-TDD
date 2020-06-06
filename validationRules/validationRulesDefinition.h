@@ -1,5 +1,6 @@
 #include "../dependencies/libraries.h"
 #include "../dependencies/dataStructures.h"
+#include "../dependencies/calculationStructures.h"
 
 typedef struct validationRules {
 
